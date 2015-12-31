@@ -37,3 +37,9 @@ Route::get('http://jsonapp.localhost/', function(){
 Route::get('/', function(){
     return view('ajax');
 });
+
+Route::get('/pretend-api', function(){
+// Provide an API for Vue to access the data from, which is all of the tasks in JSON format.
+    $tasks = App\Task::latest()->get();
+    return view('create_json', compact('tasks'));
+});

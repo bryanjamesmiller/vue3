@@ -6,13 +6,14 @@ Vue.component('tasks', {
         };
     },
     created: function(){
-        if(window.location.href == 'http://localhost:63342/vue2/jsonApp/public/index.php') {
-            $my_api_url = 'http://jsonapp.localhost/pretend-api';
-        } else {
-            $my_api_url = 'http://jsonapp.grat.xyz/pretend-api';
-        }
-        $.getJSON($my_api_url, function(tasks){
-            this.list = tasks;
+        console.log('hello');
+var vm = this;
+        $.getJSON('/pretend-api', function(tasks){
+            console.log('hi');
+            console.log(tasks);
+            console.log('hi2');
+            vm.list = tasks;
+
         }.bind(this));
     }
 });
